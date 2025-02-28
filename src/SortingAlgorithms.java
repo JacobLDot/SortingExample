@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * A class to implement all the sorting algorithms
  * so that we can test timing.
@@ -7,7 +9,7 @@
  */
 public class SortingAlgorithms {
     // Change this value to change testing size
-    public static final int TEST_SIZE = 10;
+    public static final int TEST_SIZE = 69000;
 
     // Change this value to change the range of numbers generated
     public static final int MAX_NUMBER_SIZE = 100;
@@ -15,11 +17,43 @@ public class SortingAlgorithms {
     // Bubble Sort
     public static void bubbleSort(int[] arr) {
         // TODO: Implement bubble sort
+        long startTime = System.currentTimeMillis();
+        int temp;
+        for(int i = 0; i < arr.length-1; i++) {
+            for (int j = 0; j< arr.length-i-1; j++) {
+                if(arr[j] > arr[j+1]) {
+                    temp = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1] = temp;
+                }
+            }
+        }
+        long endTime = System.currentTimeMillis();
+        long duration = endTime - startTime;
+        System.out.println("BubbleSort Time: " + duration + "ms");
     }
 
     // Selection Sort
     public static void selectionSort(int[] arr) {
         // TODO: Implement selection sort
+        long startTime = System.currentTimeMillis();
+        int temp;
+        for(int i = 0; i < arr.length - 1; i++) {
+            int lowestIndex = i;
+            for (int j = i + 1; j< arr.length; j++) {
+                if(arr[j] < arr[lowestIndex]) {
+                    lowestIndex = j;
+                }
+            }
+            if (lowestIndex != i) {
+                temp = arr[i];
+                arr[i] = arr[lowestIndex];
+                arr[lowestIndex] = temp;
+            }
+        }
+        long endTime = System.currentTimeMillis();
+        long duration = endTime - startTime;
+        System.out.println("SelectionSort Time: " + duration + "ms");
     }
 
     // Merge Sort
